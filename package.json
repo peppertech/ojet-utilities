@@ -1,9 +1,12 @@
 {
   "name": "attr-to-props",
-  "displayName": "Convert attr-to-props",
+  "displayName": "Convert attr to props",
   "description": "Convert attributes to properties in Oracle JET VODM (Preact) projects",
-  "repository": {"type": "github","url": "https://github.com/peppertech/attr-to-props"},
-  "publisher": "DessertFirstProductions",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/peppertech/attr-to-props"
+  },
+  "publisher": "dessertfirstproductions",
   "icon": "images/logo.png",
   "version": "1.0.0",
   "engines": {
@@ -55,5 +58,9 @@
     "webpack-cli": "^5.1.4",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1"
+  },
+  "__metadata": {
+    "publisherDisplayName": "Dessert First Productions",
+    "preRelease": true
   }
 }
