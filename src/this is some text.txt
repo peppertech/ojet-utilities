@@ -1,0 +1,16 @@
+this is now selected
+onojAction
+scroll-options
+label-hint
+labelEdge
+
+aria-label="Departments Table"
+accessibility.row-header="depName"
+class="demo-table-container"
+data="[[dataprovider]]"
+edit-mode="rowEdit"
+data-oj-disable-passthrough = true
+edit-row="{{editRow}}"
+on-oj-before-row-edit="[[beforeRowEditListener]]"
+on-oj-before-row-edit-end="[[beforeRowEditEndListener]]"
+columns-default.sortable="disabled"
