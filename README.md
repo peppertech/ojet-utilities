@@ -1,4 +1,4 @@
-# attr-to-props For Oracle JET VDOM (Preact)
+# Convert attributes to properties for Oracle JET VDOM (Preact)
 
 When migrating from an MVVM project or component to VDOM and tsx, you need to convert the HTML attribute syntax to properties.  While this is a pretty simple task, it can become tedious if the attribute is rather long.
 
@@ -11,11 +11,9 @@ Select any attribute that does not start with `aria` or `data` and then right-cl
 The menu option will only be available if you have some text selected
 
 ## Examples 
-> on-oj-action becomes onojAction
-
-> label-hint becomes labelHint
-
-> on-oj-before-row-edit-end becomes onojBeforeRowEditEnd
+> `on-oj-action` becomes `onojAction` </br>
+  `label-hint` becomes `labelHint` </br>
+  `on-oj-before-row-edit-end` becomes `onojBeforeRowEditEnd`
 
 ## Features
 

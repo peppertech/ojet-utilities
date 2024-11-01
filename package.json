@@ -4,8 +4,8 @@
   "description": "Convert attributes to properties in Oracle JET VODM (Preact) projects",
   "repository": {"type": "github","url": "https://github.com/peppertech/attr-to-props"},
   "publisher": "DessertFirstProductions",
-  "icon": "./images/logo.png",
-  "version": "0.0.1",
+  "icon": "images/logo.png",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.95.0"
   },
