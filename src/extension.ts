@@ -5,8 +5,13 @@ import * as vscode from "vscode";
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  const disposable = vscode.commands.registerCommand(
-    "attr-to-props.convertAttr",
+  const convert_element = vscode.commands.registerCommand(
+    "ojet-utilities.convertElement",
+    () => {
+      console.log("Hello World from Convert Element")
+    })
+  const convert_attr = vscode.commands.registerCommand(
+    "ojet-utilities.convertAttr",
     () => {
       const editor = vscode.window.activeTextEditor;
 
@@ -48,7 +53,8 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  context.subscriptions.push(disposable);
+  context.subscriptions.push(convert_attr);
+  context.subscriptions.push(convert_element);
 }
 
 // This method is called when your extension is deactivated

@@ -1,14 +1,14 @@
 {
-  "name": "attr-to-props",
-  "displayName": "Convert attr to props",
-  "description": "Convert attributes to properties in Oracle JET VODM (Preact) projects",
+  "name": "ojet-utilities",
+  "displayName": "Utilities for Oracle JET VDOM (Preact)",
+  "description": "Various converters to help migration MVVM syntax to VDOM (Preact) syntax in Oracle JET VODM (Preact) projects",
   "repository": {
     "type": "github",
-    "url": "https://github.com/peppertech/attr-to-props"
+    "url": "https://github.com/peppertech/ojet-utilities"
   },
   "publisher": "dessertfirstproductions",
   "icon": "images/logo.png",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -20,15 +20,24 @@
   "contributes": {
     "commands": [
       {
-        "command": "attr-to-props.convertAttr",
-        "title": "Convert attr to props"
+        "command": "ojet-utilities.convertAttr",
+        "title": "Convert attr to prop"
+      },
+      {
+        "command": "ojet-utilities.convertElement",
+        "title": "Convert element"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "attr-to-props.convertAttr",
+          "command": "ojet-utilities.convertAttr",
           "title": "Convert attr to props",
+          "when": "editorTextFocus && editor.hasSelection"
+        },
+        {
+          "command": "ojet-utilities.convertElement",
+          "title": "Convert element",
           "when": "editorTextFocus && editor.hasSelection"
         }
       ]
