@@ -1,8 +1,10 @@
-# Convert attributes to properties for Oracle JET VDOM (Preact)
+# Utilities for Oracle JET VDOM (Preact) projects
 
 When migrating from an MVVM project or component to VDOM and tsx, you need to convert the HTML attribute syntax to properties.  While this is a pretty simple task, it can become tedious if the attribute is rather long.
 
-This extension will convert any attribute that you select in the editor to use the proper camel-case style of properties.
+This extension will provide various utilities to help with the migration from MVVM based code syntax or samples to TSX/Preact syntax.
+
+The initial utility will convert any attribute that you select in the editor to use the proper camel-case style of a property.
 
 ## How to use
 
@@ -31,6 +33,10 @@ Any Oracle JET VDOM (Preact) based application or VComponent.
 
 ## Release Notes
 
+
+### 0.1.0
+
+Renamed the extension to be ojet-utilities, so that I can provide more than one converter and/or other features to help with migrating from MVVM to VDOM.
 
 ### 0.0.1
 
