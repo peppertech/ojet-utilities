@@ -1,14 +1,14 @@
 {
   "name": "ojet-utilities",
   "displayName": "Utilities for Oracle JET VDOM (Preact)",
-  "description": "Various converters to help migration MVVM syntax to VDOM (Preact) syntax in Oracle JET VODM (Preact) projects",
+  "description": "Various converters to help migration of MVVM syntax to VDOM (Preact) syntax in Oracle JET VODM (Preact) projects",
   "repository": {
     "type": "github",
     "url": "https://github.com/peppertech/ojet-utilities"
   },
   "publisher": "dessertfirstproductions",
   "icon": "images/logo.png",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -21,7 +21,7 @@
     "commands": [
       {
         "command": "ojet-utilities.convertAttr",
-        "title": "Convert attr to prop"
+        "title": "Convert attribute to property"
       },
       {
         "command": "ojet-utilities.convertElement",
@@ -32,7 +32,7 @@
       "editor/context": [
         {
           "command": "ojet-utilities.convertAttr",
-          "title": "Convert attr to props",
+          "title": "Convert attribute to property",
           "when": "editorTextFocus && editor.hasSelection"
         },
         {

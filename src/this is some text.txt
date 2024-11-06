@@ -13,4 +13,14 @@ data-oj-disable-passthrough = true
 edit-row="{{editRow}}"
 on-oj-before-row-edit="[[beforeRowEditListener]]"
 on-oj-before-row-edit-end="[[beforeRowEditEndListener]]"
+animation-on-display-change="[[test]]"
 columns-default.sortable="disabled"
+
+<oj-form-layout>
+    <oj-input-text
+        label-edge="inside"
+        label-hint="[[getLabel]]"
+        on-value-changed="[[changeHandler]]"
+    ></oj-input-text>
+</oj-form-layout>
+<oj-button on-oj-action="[[actionHandler]]">Testing</oj-button>
