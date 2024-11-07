@@ -24,7 +24,7 @@ const processAttribute = (attr) => {
       isAction=false
       return;
     }
-    //   everything else, remove the - and uppercase the first letter of the word
+    //   everything else, remove the - and uppercase the first letter of the next word
     if (idx > 0) {
       resultStr += String(item).charAt(0).toUpperCase() + String(item).slice(1);
     }
@@ -44,35 +44,24 @@ const processElement = (elem) => {
       return;
     }
     if (item.includes("=")) {
-      console.log("We have an attribute: ", item);
       let attrSplit = item.split("=");
-      console.log("parts: ", attrSplit);
-      const partOne = processAttribute(attrSplit[0]);
-      const partTwo = processBinding(attrSplit[1]);
-      tempArray.push(partOne + "=" + partTwo);
+      tempArray.push(processAttribute(attrSplit[0]) + "=" + processBinding(attrSplit[1]));
     } else {
       tempArray.push(item);
     }
   });
-  console.log("Result: ", tempArray.join(" "));
   return tempArray.join(" ");
 };
 
 const processBinding = (str) => {
-  let tempStr1 = "";
-  let tempStr2 = "";
+  let tempStr = "";
   if (str.includes('"[[')) {
-    tempStr1 = str.replace('"[[', "{");
-    tempStr2 = tempStr1.replace(']]"', "}");
-    console.log("binding: ", tempStr2);
-    return tempStr2;
+    tempStr = str.replace('"[[', "{").replace(']]"', "}");
+    return tempStr;
   } else if (str.includes('"{{')) {
-    tempStr1 = str.replace('"{{', "{");
-    tempStr2 = tempStr1.replace('}}"', "}");
-    console.log("binding: ", tempStr2);
-    return tempStr2;
+    tempStr = str.replace('"{{', "{").replace('}}"', "}");
+    return tempStr;
   } else {
-    console.log("binding: ", str);
     return str;
   }
 };
@@ -88,16 +77,7 @@ export function activate(context: vscode.ExtensionContext) {
         const document = editor.document;
         const selection = editor.selection;
         const startStr = document.getText(selection);
-        console.log("Selection: ", startStr);
         let splitArray = startStr.split(" ");
-        console.log("Str Array: ", splitArray);
-
-        const startLine = selection.start.line;
-        const endLine = selection.end.line;
-        const totalLines = endLine - startLine;
-        console.log(
-          `start: ${startLine} | end: ${endLine} | total: ${totalLines}`
-        );
         const updatedArray = processElement(splitArray);
 
         editor.edit((editBuilder) => {
