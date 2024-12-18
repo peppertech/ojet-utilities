@@ -2,6 +2,10 @@
 
 All notable changes to the "ojet-utilities" extension will be documented in this file.
 
+## [0.2.1]
+
+- updated logo
+
 ## [0.2.0]
 
 - added conversion of an MVVM element to VDOM
