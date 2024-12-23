@@ -8,7 +8,7 @@
   },
   "publisher": "dessertfirstproductions",
   "icon": "images/logo.png",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "engines": {
     "vscode": "^1.95.0"
   },

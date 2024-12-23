@@ -13,7 +13,7 @@ const processAttribute = (attr) => {
       return;
     }
     //   always leave on and oj string as lowercase
-    if (item === "on" && idx==0) {
+    if (item === "on" && idx == 0) {
       resultStr += item;
       isAction = true;
       return;
@@ -21,9 +21,21 @@ const processAttribute = (attr) => {
     //  always leave the first word lowercase
     else if (idx == 0 || isAction) {
       resultStr += item;
-      isAction=false
+      isAction = false;
       return;
     }
+
+    // need to handle attributes with dot notation and nested objects like dnd in table.
+    // This:  dnd.drag.rows.data-types='["application/ojtablerows+json"]'
+    // should become this
+    // dnd = {
+    //   drag: {
+    //     rows: {
+    //       dataTypes: '["application/ojtablerows+json"]'
+    //     }
+    //   },
+    // };
+
     //   everything else, remove the - and uppercase the first letter of the next word
     if (idx > 0) {
       resultStr += String(item).charAt(0).toUpperCase() + String(item).slice(1);
@@ -32,9 +44,42 @@ const processAttribute = (attr) => {
   return isAriaOrData ? attr : resultStr;
 };
 
+const processDotNotation = (str) => {
+  let tempStr = "";
+  let matchCount = -1;
+  const temp = str.split(".");
+  temp.map((item, idx) => {
+    if (item.includes("=")) {
+      let attrSplit = item.split("=");
+      item =
+        processAttribute(attrSplit[0]) +
+        ":" +
+        processBinding(attrSplit[1]);
+    }
+    if (idx == 0) {
+      tempStr += item+"=";
+      matchCount++;
+    } else {
+      tempStr += "{ " + item+":";
+      matchCount++;
+    }
+  });
+  tempStr = tempStr.slice(0,-1);
+  while (matchCount > 0) {
+    tempStr += "}";
+    matchCount--;
+  }
+  //  console.log(tempStr);
+  return tempStr;
+};
+
 const processElement = (elem) => {
   let tempArray = [];
   elem.map((item, idx) => {
+    if (item.includes(".")) {
+      tempArray.push(processDotNotation(item));
+      return;
+    }
     if (idx == 0) {
       tempArray.push(item);
       return;
@@ -45,12 +90,14 @@ const processElement = (elem) => {
     }
     if (item.includes("=")) {
       let attrSplit = item.split("=");
-      tempArray.push(processAttribute(attrSplit[0]) + "=" + processBinding(attrSplit[1]));
+      tempArray.push(
+        processAttribute(attrSplit[0]) + "=" + processBinding(attrSplit[1])
+      );
     } else {
       tempArray.push(item);
     }
   });
-  return tempArray.join(" ");
+  return tempArray.join("\r\n");
 };
 
 const processBinding = (str) => {
@@ -60,6 +107,9 @@ const processBinding = (str) => {
     return tempStr;
   } else if (str.includes('"{{')) {
     tempStr = str.replace('"{{', "{").replace('}}"', "}");
+    return tempStr;
+  } else if (str.includes("'{")) {
+    tempStr = str.replace("'{", "{{").replace("}'", "}}");
     return tempStr;
   } else {
     return str;
@@ -77,8 +127,9 @@ export function activate(context: vscode.ExtensionContext) {
         const document = editor.document;
         const selection = editor.selection;
         const startStr = document.getText(selection);
-        let splitArray = startStr.split(" ");
+        let splitArray = startStr.split("\r\n");
         const updatedArray = processElement(splitArray);
+        //        processDotNotation("dnd.drag.rows.data-types='[\"application/ojtablerows+json\"]'");
 
         editor.edit((editBuilder) => {
           editBuilder.replace(selection, updatedArray);

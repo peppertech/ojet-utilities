@@ -59,4 +59,7 @@ Any Oracle JET VDOM (Preact) based application or VComponent.
 ## Known Issues
 
 * You can only select one attribute at a time.
+* To process both the attribute name and value, use *Convert Element* feature.
 * When converting an element, it cannot use inline \<template> elements.
+* Attributes using dot-notation with multiple entires, will not be combined into the same object as they should be.
+* If and object property name starts with *data* it will not be processed property.

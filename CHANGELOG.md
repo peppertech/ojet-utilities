@@ -2,6 +2,12 @@
 
 All notable changes to the "ojet-utilities" extension will be documented in this file.
 
+## [0.3.0]
+
+- improved processing of attributes with values that are objects
+- initial processing of dot-notation based attributes
+  
+
 ## [0.2.1]
 
 - updated logo
