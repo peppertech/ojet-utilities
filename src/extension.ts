@@ -8,7 +8,7 @@ const processAttribute = (attr) => {
   let resultStr = "";
   const temp = attr.split("-");
   temp.map((item, idx) => {
-    if (item == "aria" || item == "data" || isAriaOrData) {
+    if (item.includes("aria") || item.includes("data") || isAriaOrData) {
       isAriaOrData = true;
       return;
     }
@@ -51,10 +51,10 @@ const processDotNotation = (str) => {
   temp.map((item, idx) => {
     if (item.includes("=")) {
       let attrSplit = item.split("=");
-      item =
+      item = "{" +
         processAttribute(attrSplit[0]) +
         ":" +
-        processBinding(attrSplit[1]);
+        processBinding(attrSplit[1]) + "}";
     }
     if (idx == 0) {
       tempStr += item+"=";
