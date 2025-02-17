@@ -62,3 +62,7 @@ Any Oracle JET VDOM (Preact) based application or VComponent.
 * When converting an element, it cannot use inline \<template> elements.
 * Attributes using dot-notation with multiple entires, will not be combined into the same object as they should be.
 * If a property with an object for it's value, contains a key that starts with *data* it will not be processed property.
+
+
+## Reporting Bugs or requesting new features
+Feel free to open issues in the GitHub repro to request new features or report bugs that you are hitting.  I'm updating this utility as I run into my own needs and issues at the moment.  If anyone else is using it and has issues that they want focused on, just let me know.
