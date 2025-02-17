@@ -51,3 +51,43 @@ columns-default.sortable="disabled"
                 "field": "ManagerId",
                 "id": "manId"}]'>
 </oj-table>
+<oj-table
+    id="table2"
+    aria-label="Revenue Table 2"
+    accessibility.row-header="year"
+    on-keydown="[[handleKey]]"
+    class="demo-table-container"
+    data="[[targetDataprovider]]"
+    columns-default='{"sortable": "disabled"}'
+    columns='[{"headerText": "Year", "field": "Year", "id": "year"},
+            {"headerText": "Q1", "field": "Q1", "id": "q1"},
+            {"headerText": "Q2", "field": "Q2", "id": "q2"},
+            {"headerText": "Q3", "field": "Q3", "id": "q3"},
+            {"headerText": "Q4", "field": "Q4", "id": "q4"}]'
+    selection-mode='{"row": "multiple"}'
+    dnd.drop.rows.data-types='["application/ojtablerows+json"]'
+    dnd.drop.rows.drop="[[handleDropRows]]"
+    >
+</oj-table>
+
+
+<oj-button on-oj-action="[[actionHandler]]">Testing</oj-button>
+
+<oj-chart
+    id="barChart"
+    type="bar"
+    orientation="[[orientationValue]]"
+    stack="[[stackValue]]"
+    data="[[dataProvider]]"
+    animation-on-display="auto"
+    animation-on-data-change="auto"
+    hover-behavior="dim"
+    >        
+    <template slot="itemTemplate" data-oj-as="item">
+        <oj-chart-item
+        value="[[item.data.value]]"
+        group-id="[[ [item.data.group] ]]"
+        series-id="[[item.data.series]]"
+        ></oj-chart-item>
+    </template>
+</oj-chart>

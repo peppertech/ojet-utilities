@@ -6,6 +6,7 @@ All notable changes to the "ojet-utilities" extension will be documented in this
 
 - improved processing of attributes with values that are objects
 - initial processing of dot-notation based attributes
+- fixed an issue where the first line of selected text was always skipped
   
 
 ## [0.2.1]

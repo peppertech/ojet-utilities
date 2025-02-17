@@ -21,23 +21,23 @@
     "commands": [
       {
         "command": "ojet-utilities.convertAttr",
-        "title": "Convert attribute to property"
+        "title": "OJET Utilities: Attribute to property"
       },
       {
         "command": "ojet-utilities.convertElement",
-        "title": "Convert element"
+        "title": "OJET Utilities: Convert MVVM element to TSX"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "command": "ojet-utilities.convertAttr",
-          "title": "Convert attribute to property",
+          "title": "OJET Utilities: Convert attribute to property",
           "when": "editorTextFocus && editor.hasSelection"
         },
         {
           "command": "ojet-utilities.convertElement",
-          "title": "Convert element",
+          "title": "OJET Utilities: Convert MVVM element to TSX",
           "when": "editorTextFocus && editor.hasSelection"
         }
       ]

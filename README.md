@@ -4,7 +4,6 @@ When migrating from an MVVM project or component to VDOM and tsx, you need to co
 
 This extension will provide various utilities to help with the migration from MVVM based code syntax or samples to TSX/Preact syntax.
 
-The initial utility will convert any attribute that you select in the editor to use the proper camelCase style of a property.
 
 ## Features
 
@@ -62,4 +61,4 @@ Any Oracle JET VDOM (Preact) based application or VComponent.
 * To process both the attribute name and value, use *Convert Element* feature.
 * When converting an element, it cannot use inline \<template> elements.
 * Attributes using dot-notation with multiple entires, will not be combined into the same object as they should be.
-* If and object property name starts with *data* it will not be processed property.
+* If a property with an object for it's value, contains a key that starts with *data* it will not be processed property.
